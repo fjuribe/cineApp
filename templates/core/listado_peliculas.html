@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block js %}
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script src="{% static 'js/confirmacion.js' %}"></script>
+{% endblock %}
+
+
+
+
+{% block contenido %}
+
+<h2>Listado de peliculas</h2>
+
+
+
+<table>
+	<caption>tabla de peliculas</caption>
+	<thead>
+		<tr>
+			<th>Nombre</th>
+			<th>Duracion</th>
+			<th>Año</th>
+			<th>Genero</th>
+			<th>Opciones</th>
+		</tr>
+	</thead>
+	<tbody>
+	    {% for p in peliculas %}
+	    	<tr>
+			  <td>{{p.nombre}}</td>
+			  <td>{{p.duracion}}</td>
+			  <td>{{p.anio}}</td>
+			  <td>{{p.genero}}</td>
+			  <td>
+			  	 <a href="{% url 'modificar_pelicula' p.id %}">Modificar</a>
+			  	  <a href="{% url 'eliminar_pelicula' p.id %}" onclick="return confirm({{p.id}})">Eliminar</a>
+			  </td>
+		   </tr>
+	    {% endfor %}
+	</tbody>
+</table>
+{% endblock %}
+
+
