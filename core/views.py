@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Pelicula
 from .forms import PeliculaForm
-
+from django.contrib.auth.decorators import login_required,permission_required
 # Create your views here.
 def home(request):
 	data={
@@ -14,6 +14,7 @@ def galeria(request):
 	return render(request,'core/galeria.html')
 
 
+@login_required
 def listado_pelicula(request):
 	peliculas=Pelicula.objects.all()
 	data={
@@ -22,7 +23,7 @@ def listado_pelicula(request):
 	return render(request,'core/listado_peliculas.html',data)
 
 
-
+@permission_required('core.add_pelicula')
 def nueva_pelicula(request):
 	data={
 		'form':PeliculaForm()
