@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<h2>Registro de usuario</h2>
+	<form action="" method="POST">
+			{% csrf_token %}
+        <table>
+        	{{form.as_table}}
+        </table>
+			<input type="reset" name="" value="limpiar">
+			<input type="submit" name="" value="registrar">
+	</form>
+</body>
+</html>

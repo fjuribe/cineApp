@@ -1,15 +1,18 @@
 {% extends 'core/base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block contenido %}
 	<h2>Nueva Pelicula</h2>
 
 	<form action="" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
 		{% csrf_token %}
-		<table>
-			{{form.as_table}}
-		</table>
-		<button type="reset">Limpiar</button>
-		<button type="submit">Enviar</button>
+
+			{{form|crispy}}
+        <div class="float-right">
+			<button class="btn btn-primary" type="reset">Limpiar</button>
+			<button class="btn btn-warning" type="submit">Enviar</button>
+        </div>
 	</form>
 {{mensaje}}
 {%  endblock %}
